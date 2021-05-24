@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class=container>
+    <h1>recipes</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>dish</td>
+                <td>ingredients</td>
+                <td>how to</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if recipes %}
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.recipe_name }}</td>
+                <td>{{ recipe.ingredients }}</td>
+                <td>{{ recipe.prep }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
