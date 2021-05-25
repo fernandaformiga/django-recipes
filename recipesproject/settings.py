@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'people',
     'recipes',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,13 +80,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'pgdjango',
+        'NAME': 'postgres',
 
-        'USER': 'pgdjango',
+        'USER': 'postgres',
 
-        'PASSWORD': 'pgdjango',
+        'PASSWORD': 'database',
 
-        'HOST': '172.17.0.2',
+        'HOST': 'localhost',
 
         'PORT': '5432',
     }
