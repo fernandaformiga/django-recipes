@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+    db:
+        image: postgres
+        env_file: .env
+        restart: always
+        healthcheck:
+            test: ["CMD", "pg_isready", "-U", "$POSTGRES_USER", "-d", "$POSTGRES_DB"]
+            timeout: 5s
+            interval: 5s
+            retries: 3
+    django:
+        build:
+            dockerfile: Dockerfile
+            context: .
+        ports:
+            - 8000:8000
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            db:
+                condition: service_healthy
+        command: bash -c "python manage.py migrate && python manage.py runserver 0:8000"
