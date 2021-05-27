@@ -6,3 +6,6 @@ class Person(models.Model):
     name = CharField(max_length=50)
     age = IntegerField()
     occupation = CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.nome
